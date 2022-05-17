@@ -1,9 +1,18 @@
 package view;
+
+import java.awt.HeadlessException;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class MainForm extends javax.swing.JFrame {
 
+    boolean valtozas;
+
     public MainForm() {
+        valtozas = false;
         initComponents();
-         btnIndit.setEnabled(false);
+        btnIndit.setEnabled(false);
     }
 
     /**
@@ -16,6 +25,7 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         numMax = new javax.swing.JSpinner();
@@ -23,18 +33,18 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnIndit = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        jrbKo = new javax.swing.JRadioButton();
+        jrbPapir = new javax.swing.JRadioButton();
+        jrbOllo = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuMnetes = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuKilepes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
@@ -97,11 +107,29 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Kő");
+        buttonGroup2.add(jrbKo);
+        jrbKo.setText("Kő");
+        jrbKo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                valaszt(evt);
+            }
+        });
 
-        jRadioButton2.setText("Papír");
+        buttonGroup2.add(jrbPapir);
+        jrbPapir.setText("Papír");
+        jrbPapir.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                valaszt(evt);
+            }
+        });
 
-        jRadioButton3.setText("Olló");
+        buttonGroup2.add(jrbOllo);
+        jrbOllo.setText("Olló");
+        jrbOllo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                valaszt(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,11 +140,11 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnIndit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(jrbKo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)
+                        .addComponent(jrbPapir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)))
+                        .addComponent(jrbOllo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -124,9 +152,9 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(jrbKo)
+                    .addComponent(jrbPapir)
+                    .addComponent(jrbOllo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnIndit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -163,14 +191,24 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenu1.setText("Fájl");
 
-        jMenuItem1.setText("Ment");
-        jMenu1.add(jMenuItem1);
+        menuMnetes.setText("Ment");
+        menuMnetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMnetesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuMnetes);
 
         jMenuItem2.setText("Betölt");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Kilép");
-        jMenu1.add(jMenuItem3);
+        menuKilepes.setText("Kilép");
+        menuKilepes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuKilepesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuKilepes);
 
         jMenuBar1.add(jMenu1);
 
@@ -236,8 +274,27 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void btnInditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInditActionPerformed
-     
+
     }//GEN-LAST:event_btnInditActionPerformed
+
+    private void valaszt(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valaszt
+        if (valtozas = true) {
+            btnIndit.setEnabled(true);
+        }
+    }//GEN-LAST:event_valaszt
+
+    private void menuKilepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKilepesActionPerformed
+        mentesAblak();
+    }//GEN-LAST:event_menuKilepesActionPerformed
+
+    private void mentesAblak() throws HeadlessException {
+        final JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(chbMent);
+    }
+
+    private void menuMnetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMnetesActionPerformed
+        mentesAblak();
+    }//GEN-LAST:event_menuMnetesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -275,6 +332,7 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIndit;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox chbMent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -285,18 +343,18 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButton jrbKo;
+    private javax.swing.JRadioButton jrbOllo;
+    private javax.swing.JRadioButton jrbPapir;
+    private javax.swing.JMenuItem menuKilepes;
+    private javax.swing.JMenuItem menuMnetes;
     private javax.swing.JSpinner numMax;
     // End of variables declaration//GEN-END:variables
 }
