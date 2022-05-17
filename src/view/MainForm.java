@@ -3,6 +3,7 @@ public class MainForm extends javax.swing.JFrame {
 
     public MainForm() {
         initComponents();
+         btnIndit.setEnabled(false);
     }
 
     /**
@@ -47,6 +48,8 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel1.setText("körök száma 2 -");
 
+        numMax.setModel(new javax.swing.SpinnerNumberModel(5, 5, 10, 1));
+
         chbMent.setSelected(true);
         chbMent.setText("kilépéskor ment");
 
@@ -88,6 +91,11 @@ public class MainForm extends javax.swing.JFrame {
 
         btnIndit.setText("Kör indítása");
         btnIndit.setActionCommand("");
+        btnIndit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInditActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setText("Kő");
 
@@ -226,6 +234,10 @@ public class MainForm extends javax.swing.JFrame {
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void btnInditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInditActionPerformed
+     
+    }//GEN-LAST:event_btnInditActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
